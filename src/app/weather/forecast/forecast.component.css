@@ -1,0 +1,16 @@
+.weather-forecast {
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  .forecast-card {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px;
+    display: inline-block;
+  }
+  
+  h1 {
+    font-size: 24px;
+  }

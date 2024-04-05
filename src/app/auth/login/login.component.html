@@ -1,0 +1,121 @@
+<div class="container">
+  <p-card [style]="{ width: '360px' }">
+    <form #form="ngForm">
+      <div class="input-container">
+        <p-inputGroup>
+          <p-inputGroupAddon>
+            <i class="pi pi-user"></i>
+          </p-inputGroupAddon>
+          <input
+            pInputText
+            ngModel
+            required
+            name="username"
+            placeholder="Username"
+            pattern="^[A-Za-z0-9]{1,20}"
+          />
+        </p-inputGroup>
+      </div>
+      <div class="input-container">
+        <p-inputGroup>
+          <p-inputGroupAddon>
+            <i class="pi pi-lock"></i>
+          </p-inputGroupAddon>
+          <input
+            pInputText
+            ngModel
+            required
+            password
+            type="password    "
+            name="password"
+            placeholder="Password"
+            pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!#%*?&]{6,20}$"
+          />
+        </p-inputGroup>
+      </div>
+    </form>
+    <div class="button-container">
+      <p-button
+        label="Login"
+        icon="pi pi-check"
+        (click)="onSubmit()"
+      ></p-button>
+      <p-button
+        (click)="showDialog()"
+        icon="pi pi-external-link"
+        label="SignUp"
+      ></p-button>
+    </div>
+  </p-card>
+</div>
+
+<div class="card flex justify-content-center">
+  <p-dialog
+    header="Please enter details"
+    [(visible)]="visible"
+    [modal]="true"
+    [style]="{ width: '50vw' }"
+    [draggable]="false"
+    [resizable]="false"
+  >
+    <form #signupform="ngForm">
+      <p-inputGroup>
+        <p-inputGroupAddon>
+          <i class="pi pi-user"></i>
+        </p-inputGroupAddon>
+        <input
+          pInputText
+          ngModel
+          required
+          name="username"
+          placeholder="Username"
+          pattern="^[A-Za-z0-9]{1,20}"
+        />
+      </p-inputGroup>
+      <p-inputGroup>
+        <p-inputGroupAddon>
+          <i class="pi pi-lock"></i>
+        </p-inputGroupAddon>
+        <input
+          pInputText
+          ngModel
+          required
+          password
+          name="password"
+          placeholder="Password"
+          pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!#%*?&]{6,20}$"
+        />
+      </p-inputGroup>
+      <p-inputGroup>
+        <p-inputGroupAddon>city</p-inputGroupAddon>
+        <input
+          pInputText
+          ngModel
+          required
+          name="cityname"
+          placeholder="city"
+          pattern="^[A-Za-z]{1,28}$"
+        />
+      </p-inputGroup>
+      <p-inputGroup>
+        <p-inputGroupAddon>zip</p-inputGroupAddon>
+        <input
+          pInputText
+          ngModel
+          required
+          name="zipcode"
+          placeholder="zipcode"
+          pattern="\d{6}(?:[-\s]\d{4})?$"
+        />
+      </p-inputGroup>
+
+      <p-button
+        label="Create Account"
+        icon="pi pi-check"
+        (click)="createUser()"
+        [disabled]="signupForm && !signupForm.valid"
+      ></p-button>
+    </form>
+  </p-dialog>
+</div>
+<p-toast></p-toast>

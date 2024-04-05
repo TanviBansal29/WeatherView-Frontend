@@ -1,0 +1,30 @@
+.container{
+    display: flex;
+    height: 85vh;
+    justify-content: center;
+    align-items: center;
+
+
+}
+form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-items: center;
+    gap: 2vw;
+
+}
+.input-container{
+    margin: 10px;
+}
+.button-container{
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 5%;
+    margin: 10px;
+
+}
+input.ng-invalid.ng-touched{
+    border:2px solid red;
+}

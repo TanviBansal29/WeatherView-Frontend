@@ -1,0 +1,24 @@
+.user-body{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-image: url("../../../assets/lukasz-lada-LtWFFVi1RXQ-unsplash.jpg");
+    background-size: 100% 100%;
+  }
+
+  .search{
+    margin: 20px 0px;
+  }
+  
+  .searchBar{
+    width: 500px;
+  }
+
+
+  .spinner{
+    margin: 10px;
+    display: flex;
+    justify-content: center;
+  }

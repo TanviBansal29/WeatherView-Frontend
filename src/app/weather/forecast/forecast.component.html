@@ -1,0 +1,27 @@
+<div class="weather-forecast">
+  <div class="forecast-card" *ngFor="let forecast of forecasts">
+    <p>{{ forecast.Date | date }}</p>
+    <p>
+      <i class="fa-solid fa-temperature-high"></i>
+      {{ forecast["Max_temp (°C)"] }}°C
+    </p>
+    <p>
+      <i class="fa-solid fa-temperature-low"></i>
+      {{ forecast["Min_temp (°C)"] }}°C
+    </p>
+    <p>
+      <i class="fa-solid fa-wind"></i> {{ forecast["Windspeed (m/hr)"] }}(m/hr)
+    </p>
+    <p><i class="fa-regular fa-sun"></i> {{ forecast["Sunrise"] }}</p>
+    <p><i class="fa-regular fa-moon"></i> {{ forecast["Sunset"] }}</p>
+  </div>
+</div>
+
+<!-- {
+  "Date": "2024-04-04",
+  "Max_temp (°C)": 35.5,
+  "Min_temp (°C)": 23.1,
+  "Windspeed (m/hr)": 12.5,
+  "Sunrise": "06:14 AM",
+  "Sunset": "06:45 PM"
+} -->
