@@ -3,6 +3,6 @@
     margin-right: 20px; /* Adjust as needed */
   }
 
-/* .navbar {
-position: relative;
-} */
+.navbar {
+  height: 8vh;
+} 

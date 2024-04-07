@@ -31,7 +31,7 @@
               <h2>{{ cityName | titlecase }}</h2>
             </div>
             <div class="temperature-header">
-              <h2>{{ currentTemperature + "°C" }}</h2>
+              <h2>{{ currentTemperature | temperatureConverter }}</h2>
             </div>
           </div>
 
@@ -55,21 +55,12 @@
               {{ sunset }}
             </h3>
           </div>
-          <!-- 
-          <h3>
-            <img src="../../../assets/sunrise.png" height="100px" />
-            {{ sunrise }}
-          </h3>
-          <h3>
-            <img src="../../../assets/sunset.png" height="90px" /> {{ sunset }}
-          </h3> -->
-          <!-- <div class="forecast-btn">
-            <p-button label="View Forecast" [rounded]="true"></p-button>
-          </div> -->
           <app-forecast [cityName]="cityName"></app-forecast>
         </div>
         <ng-template #noWeatherData>
-          <h1>{{ message }}</h1>
+          <div class="error-message">
+            <h1>{{ message }}</h1>
+          </div>
         </ng-template>
       </ng-template>
     </p-card>

@@ -21,7 +21,6 @@ export class UsersListComponent {
 
   onRowSelect($event: TableRowUnSelectEvent) {
     this.isUserSelected = true;
-    console.log(this.selectedUser);
     this.visible = true;
   }
   onRowUnSelect($event: TableRowUnSelectEvent) {
@@ -31,7 +30,6 @@ export class UsersListComponent {
     this.loading = true;
     this.userService.getUserByPlace(this.searchedPlace).subscribe({
       next: (data) => {
-        console.log(data);
         this.users = data;
         this.isUserSearched = true;
         this.loading = false;

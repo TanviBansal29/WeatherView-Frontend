@@ -9,6 +9,8 @@ import { WeatherService } from '../weather.service';
   providers: [WeatherService],
 })
 export class ForecastComponent {
+  loading = false;
+
   constructor() {}
   weatherser: WeatherService = inject(WeatherService);
   forecasts: any;
@@ -18,11 +20,11 @@ export class ForecastComponent {
   }
 
   getWeatherForecast() {
-    // this.loading = true;
+    this.loading = true;
     this.weatherser.getWeatherForecast(this.city, 3).subscribe({
       next: (data: any) => {
         this.forecasts = data;
-        console.log(data);
+        this.loading = false;
       },
       error: (err: HttpErrorResponse) => {
         if (err.status == 404) {

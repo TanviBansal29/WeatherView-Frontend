@@ -16,9 +16,7 @@ export const AuthGuard: CanActivateFn = (
   const decodedToken: any = jwtDecode(jwt);
 
   if (route.url[1].path === decodedToken.role) {
-    console.log(route.url);
     return true;
   }
-  console.log(jwt);
   return router.createUrlTree(['/login']);
 };

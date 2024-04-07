@@ -1,28 +1,26 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, inject } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { AuthService } from '../auth.service';
 import { MessageService } from 'primeng/api';
 import { Router } from '@angular/router';
 import { jwtDecode } from 'jwt-decode';
-import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrl: './login.component.css',
-  providers: [MessageService],
 })
 export class LoginComponent {
   @ViewChild('signupform') signupForm?: NgForm;
   @ViewChild('form') form?: NgForm;
-  loginSuccess = new Subject<void>();
+
   visible: boolean = false;
   // isSignUp: boolean = false;
+  authSer: AuthService = inject(AuthService);
 
   constructor(
-    private authSer: AuthService,
     private messageService: MessageService,
-    private router: Router
+    private router: Router // private authSer: AuthService
   ) {}
 
   showDialog() {
@@ -32,12 +30,9 @@ export class LoginComponent {
     const username = this.form?.value.username;
     const password = this.form?.value.password;
 
-    console.log(this.form);
-
     this.authSer.login(username, password).subscribe({
       next: (response: any) => {
-        this.loginSuccess.next();
-        console.log(response);
+        this.authSer.userLoggedIn.next(true);
         this.messageService.add({
           severity: 'success',
           summary: 'Success',
@@ -46,7 +41,6 @@ export class LoginComponent {
         const jwt = response.access_token;
         sessionStorage.setItem('jwt', jwt);
         const decodedToken: any = jwtDecode(jwt);
-        console.log(decodedToken);
         if (decodedToken.role == 'user') {
           this.router.navigate(['home', 'user', 'weather']);
         } else {
@@ -54,7 +48,6 @@ export class LoginComponent {
         }
       },
       error: (err) => {
-        console.error(err);
         this.messageService.add({
           severity: 'error',
           summary: 'Error',
@@ -65,7 +58,6 @@ export class LoginComponent {
   }
 
   createUser() {
-    console.log(this.signupForm);
     const username = this.signupForm?.value.username;
     const password = this.signupForm?.value.password;
     const city = this.signupForm?.value.cityname;
@@ -73,7 +65,6 @@ export class LoginComponent {
 
     this.authSer.createUser(username, password, city, zipcode).subscribe({
       next: (response: any) => {
-        console.log(response);
         this.messageService.add({
           severity: 'success',
           summary: 'Success',
@@ -82,7 +73,6 @@ export class LoginComponent {
         this.visible = false;
       },
       error: (err) => {
-        console.error(err);
         this.messageService.add({
           severity: 'error',
           summary: 'Error',

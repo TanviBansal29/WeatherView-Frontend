@@ -1,6 +1,6 @@
 <nav
   class="navbar navbar-expand-lg"
-  style="background-color: rgb(223, 163, 90)"
+  style="background-color: rgb(184, 205, 232)"
 >
   <img
     src="../../../assets/weather_logo.jpg"
@@ -30,7 +30,7 @@
         label="Logout"
         severity="danger"
         (click)="logout()"
-        *ngIf="!this.isLoggedIn"
+        *ngIf="logoutVisible"
       ></p-button>
     </form>
   </div>

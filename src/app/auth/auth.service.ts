@@ -1,11 +1,12 @@
 import { Injectable, inject } from '@angular/core';
 import { CommonConstants } from '../shared/constants/commonConstants';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Subject } from 'rxjs';
+import { BehaviorSubject, Subject } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
   httpClient: HttpClient = inject(HttpClient);
+  userLoggedIn = new Subject<boolean>();
 
   login(username: string, password: string) {
     return this.httpClient.post(`${CommonConstants.baseURL}/login`, {
@@ -16,6 +17,7 @@ export class AuthService {
 
   logout() {
     sessionStorage.clear();
+    this.userLoggedIn.next(false);
   }
 
   createUser(

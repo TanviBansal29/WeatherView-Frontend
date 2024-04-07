@@ -13,9 +13,10 @@ import { FormsModule } from '@angular/forms';
 // import { BrowserModule } from '@angular/platform-browser';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
 import { TableModule } from 'primeng/table';
+import { TemperatureConverterPipe } from './pipes/temperature.pipe';
 
 @NgModule({
-  declarations: [NavbarComponent],
+  declarations: [NavbarComponent, TemperatureConverterPipe],
   imports: [
     CommonModule,
     InputGroupModule,
@@ -41,6 +42,7 @@ import { TableModule } from 'primeng/table';
     FormsModule,
     ProgressSpinnerModule,
     TableModule,
+    TemperatureConverterPipe,
   ],
 })
 export class SharedModule {}

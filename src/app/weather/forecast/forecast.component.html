@@ -1,4 +1,7 @@
 <div class="weather-forecast">
+  <div *ngIf="loading" class="spinner">
+    <p-progressSpinner ariaLabel="loading"></p-progressSpinner>
+  </div>
   <div class="forecast-card" *ngFor="let forecast of forecasts">
     <p>{{ forecast.Date | date }}</p>
     <p>
@@ -16,12 +19,3 @@
     <p><i class="fa-regular fa-moon"></i> {{ forecast["Sunset"] }}</p>
   </div>
 </div>
-
-<!-- {
-  "Date": "2024-04-04",
-  "Max_temp (°C)": 35.5,
-  "Min_temp (°C)": 23.1,
-  "Windspeed (m/hr)": 12.5,
-  "Sunrise": "06:14 AM",
-  "Sunset": "06:45 PM"
-} -->
